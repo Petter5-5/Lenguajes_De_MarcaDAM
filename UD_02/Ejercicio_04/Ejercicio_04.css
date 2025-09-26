@@ -1,0 +1,27 @@
+h1{
+    color: red;
+}
+
+h2.T1{
+   color: blue; 
+   text-align: center;
+}
+
+h2.T2{
+    color: green;
+    text-align: center;
+}
+
+div.C1{
+    background-color: grey;
+}
+
+div.L1{
+    border-style: solid;
+    border-width: 2px;
+}
+
+div.L2{
+    border-style: double;
+    border-width: 5px;
+}

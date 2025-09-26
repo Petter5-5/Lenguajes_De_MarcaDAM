@@ -1,0 +1,122 @@
+.A {
+    color: white;
+    font-size: 20px;
+    position: relative;
+}
+
+div.CA {
+    background-color: #464646;
+    float: left;
+    margin-top: 20px;
+    margin-right: 40px;
+    height: 65px;
+    width: 160px;
+    text-align: center;
+    border-bottom-right-radius: 100px;
+}
+
+.B {
+    color: white;
+    font-size: 20px;
+    position: relative;
+}
+
+div.CB {
+    background-color: #464646;
+    float: left;
+    margin-top: 20px;
+    margin-right: 40px;
+    height: 65px;
+    width: 160px;
+    text-align: center;
+    border-top-left-radius: 100px;
+}
+
+.C {
+    color: white;
+    font-size: 20px;
+    position: relative;
+}
+
+div.CC {
+    background-color: #464646;
+    float: left;
+    margin-top: 20px;
+    margin-right: 40px;
+    height: 65px;
+    width: 160px;
+    text-align: center;
+    border-radius: 25px;
+}
+
+.D {
+    color: white;
+    font-size: 20px;
+    position: relative;
+}
+
+div.CD {
+    background-color: #464646;
+    float: left;
+    margin-top: 20px;
+    margin-right: 40px;
+    height: 65px;
+    width: 160px;
+    text-align: center;
+    border-top-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+.E {
+    color: white;
+    font-size: 20px;
+    position: relative;
+}
+
+div.CE {
+    background-color: #464646;
+    float: left;
+    margin-top: 20px;
+    margin-right: 40px;
+    height: 65px;
+    width: 160px;
+    text-align: center;
+}
+
+.F {
+    color: white;
+    font-size: 20px;
+    position: relative;
+    bottom: 5px;
+}
+
+div.CF {
+    background-color: #464646;
+    float: left;
+    margin-top: 30px;
+    margin-right: 40px;
+    height: 50px;
+    width: 160px;
+    text-align: center;
+    border-radius: 100px;
+    width: 50px;
+}
+
+.G {
+    color: white;
+    font-size: 20px;
+    position: relative;
+}
+
+div.CG {
+    background-color: #464646;
+    float: left;
+    margin-top: 20px;
+    margin-right: 40px;
+    height: 65px;
+    width: 160px;
+    text-align: center;
+    border-bottom-right-radius: 100px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
