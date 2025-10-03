@@ -1,0 +1,96 @@
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: #F0F0F0;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* -----------------Cabecera------------------- */
+
+header{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
+h1{
+    font-family: 'Georgia', serif;
+    color: #2C3E50;
+    text-align: center;
+}
+
+.img{
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* -----------------Principal------------------- */
+
+main{
+    background-color: #FFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 2rem;
+    flex: 1;
+}
+
+h2{
+    font-family: 'Georgia', serif;
+    color: #2C3E50;
+
+}
+
+ul{
+    list-style: disc;
+    padding-left: 20px;
+}
+
+table{
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    border: 1px, solid, #DDD;
+}
+
+th{
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+td{
+    padding: 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+/* -----------------Pie de Página------------------- */
+
+footer{
+    color: #7F8C8D;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    padding: 1rem;
+}
+
+a{
+    color: #E74C3C;
+    font-style: bold;
+    text-decoration: none;
+}
+
+a:hover{
+    color: #C0392B;
+}

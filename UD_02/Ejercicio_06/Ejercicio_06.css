@@ -3,9 +3,13 @@
 }
 
 .he{
+    display: flex;
     background-color: cornflowerblue;
-    text-align: center;
     font-family: 'Courier New', Courier, monospace;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .ma{
@@ -13,5 +17,7 @@
 }
 
 .fo{
+    padding: 15px;
     background-color: cornflowerblue;
+
 }
