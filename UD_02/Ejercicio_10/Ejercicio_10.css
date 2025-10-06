@@ -1,0 +1,86 @@
+
+body{
+    background-color: #f4f4f9;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    flex-direction: column;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+p{
+    text-align: left;
+    padding: 10px;
+    color: #333;
+}
+
+h1{
+    color: #2c3e50;
+}
+
+div{
+    height: 700px;
+    background-color: white;
+    border-radius: 10px;    
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+table{
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    border-collapse:collapse;
+    padding: 20px;
+    margin-top: 5%;
+}
+
+tr{
+    border: 1px solid white;
+}
+
+th{
+    background-color: #34495e;
+    color: white;
+    padding: 10px;
+}
+
+td{
+    color: black;
+    border: 1px solid white;
+    padding: 10px;
+    width: 25%;
+}
+
+img{
+    max-width: 75%;
+}
+
+.Facebook{
+    background: linear-gradient(#3b5998, #8b9dc3);
+}
+
+.Linkeding{
+    background: linear-gradient(#0077b5, #00a0dc);
+}
+
+.Twitter{
+    background: linear-gradient(#1da1f2, #a4d9f9);
+}
+
+.Instagram{
+    background: linear-gradient(#f09433, #bc1888);
+}
+
+.Snapchat{
+    background: linear-gradient(#fffc00, #ffeb3b);
+}
+
+.WhatsApp{
+    background: linear-gradient(#25d366, #128c7e);
+}

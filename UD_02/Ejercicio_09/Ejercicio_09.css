@@ -1,0 +1,36 @@
+form{
+    background-color: pink;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px black;
+}
+
+fieldset{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid green;
+}
+
+label{
+    padding: 10px;
+}
+
+input{
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 30px;
+}
+
+button{
+    width: 150px;
+    height: 35px;
+    display: flex;
+    margin-top: 15px;
+    margin-left: 40%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(77, 165, 87);
+    color: white;
+    border: 0px;
+    border-radius: 5px ;
+}
