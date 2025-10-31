@@ -1,0 +1,77 @@
+
+/************************/
+/* Estilos para el main */
+/************************/
+
+    main {
+        flex: 1;                    /* Hace que el contenido de la etiqueta main crezca para llenar el espacio disponible ¡¡¡IMPORTANTE!!!*/
+        /* Prueba a quitar la línea de flex: 1; para ver qué ocurre */
+        padding: 0 2rem 2rem 2rem;  /* Añade un relleno de 2rem alrededor del contenido principal */
+    }
+
+/***********************************/
+/* Estilos del cuerpo de la página */
+/***********************************/
+
+    body {
+        /* Estos son los estilos que van a hacer que el body se configure correctamente */
+        min-height: 100vh;                  /* Asegura que la altura mínima de la página sea la del viewport (pantalla) */
+        margin: 0;                          /* Elimina el margen por defecto de todos los elementos */
+        padding: 0;
+        box-sizing: border-box;             /* Asegura que el padding y los bordes no aumenten el ancho/alto total del elemento */
+        display: flex;                      /* Utiliza Flexbox para alinear los elementos de la lista en una fila */
+        flex-direction: column;             /* Alinea los hijos (cabecera, navegación, etc.) verticalmente */
+        /********************************************************************************/
+        font-family: 'Arial', sans-serif;   /* Define la fuente principal de la página */
+        line-height: 1.6;                   /* Establece la altura de línea (espacio entre líneas de texto) */
+        background-color: #F4F4F4;        /* Aplica un color de fondo claro al cuerpo de la página */
+    }
+
+/**************************/
+/* Estilos del encabezado */
+/**************************/
+
+    header {
+        background-color: #4CAF50;  /* Establece un color de fondo verde para la cabecera */
+        color: white;               /* Define el color del texto de la cabecera como blanco */
+        text-align: center;           /* Alinea al centro el texto de la cabecera */
+    }
+
+/*****************************/
+/* Estilos del pie de página */
+/*****************************/
+
+    footer {
+        background-color: #4CAF50;  /* Aplica el mismo color verde de la cabecera al pie de página */
+        color: white;               /* Establece el color del texto del pie de página en blanco */
+        text-align: center;           /* Centra el texto en el pie de página */
+        font-size: 0.9rem;            /* Define un tamaño de fuente más pequeño para el texto del pie de página */
+    }
+
+/******************************************/
+/* Estilos para el contenido de la página */
+/******************************************/
+
+    /* Estilos del contenedor principal */
+    .contenedor-principal {
+        display: flex;      /* Utiliza Flexbox para dividir la página */
+    }
+
+    /* Estilos de las secciones de la izquierda, centro y la derecha de la página*/
+    .izquierda, .centro, .derecha {
+        flex: 1;                    /* Cada sección tomará el mismo espacio */
+        padding: 20px;              /* Añade un relleno de 20 píxeles */
+        box-sizing: border-box;     /* Incluir el padding en el cálculo del ancho */
+    }
+
+    .izquierda {
+        background-color: #F2F2F2; /* Color de fondo gris claro */
+    }
+
+    .centro {
+        background-color: #E7F3FE; /* Color de fondo azul claro */
+    }
+
+    .derecha {
+        background-color: #F9F9F9; /* Color de fondo gris más claro */
+    }

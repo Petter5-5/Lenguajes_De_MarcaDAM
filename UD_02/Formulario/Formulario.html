@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Yeray Trejo Sánchez">
+        <title>Incidencia de clase</title>
+        <link rel="stylesheet" href="Formulario.css"> 
+    </head>
+    <body>
+        <header>
+            <img class="imagenCabecera" src="Imagenes/logo.jpg">
+        </header>
+        <main>
+            <fieldset>
+                <legend>Nueva Incidencia</legend>
+                <form name="Formulario" method="post" action="/send/">
+                    <div class="Elemento_Formulario">
+                        <label>Profesor*: </label>
+                        <input type="text" name="Profesor" placeholder="Escribe tu nombre aquí" required>
+                    </div>
+                    <div class="Elemento_Formulario">
+                        <label>Correo Electrónico*: </label>
+                        <input type="text" name="correo" placeholder="Escribe tu correo aquí" required>
+                    </div>
+                    <div class="Elemento_Formulario">
+                        <label>Departamento*: </label>
+                        <select required>
+                            <option value="1">Informática</option>
+                            <option value="2">Lengua</option>
+                            <option value="3">Matemáticas</option>
+                            <option value="4">Historia</option>
+                            <option value="5">Física</option>
+                        </select>
+                    </div>
+                    <div class="Elemento_Formulario">
+                        <label>Aula*: </label>
+                        <input type="text" name="Aula" placeholder="Indica aquí el aula de la incidencia" required>
+                    </div>
+                    <div class="Elemento_Formulario">
+                        <label>Dia de la incidencia*: </label>
+                        <input type="week" name="Dia" required>
+                    </div>
+                    <div class="Elemento_Formulario">
+                        <label>Hora de la incidencia*: </label>
+                        <input type="time" name="Hora" required>
+                    </div>
+                    <div class="Elemento_Formulario">
+                        <label>Descripción de la incidencia*: </label>
+                        <textarea name="Descripción" cols="18" rows="2" required></textarea>
+                    </div>
+                    <div class="Elemento_Imangen">
+                        <label>Imagen de la incidencia(opcional):</label>
+                        <br>
+                        <input type="file" name="Imagen">
+                    </div>
+                    <div class="Elemento_Botones">
+                        <button type="submit" name="Enviar">Enviar incidencia</button>
+                        <button type="reset" name="Borrar">Borrar formulario</button>
+                    </div>
+                </form>
+            </fieldset>
+        </main>
+        <footer>
+            <h3>Siguenos</h3>
+            <br>
+            <a href="https://es-es.facebook.com"><img class="Imagen_footer" src="Imagenes/facebook.png"></a>
+            <a href="https://twitter.com"><img class="Imagen_footer" src="Imagenes/twitter.png"></a>
+            <a href="https://www.instagram.com"><img class="Imagen_footer" src="Imagenes/insta.png"></a>
+            <a href="https://www.youtube.com"><img class="Imagen_footer" src="Imagenes/youtube.png"></a>
+            <a href="https://fpalanturing.es"><img class="Imagen_footer" src="Imagenes/website.png"></a>
+        </footer>
+    </body>
+</html>

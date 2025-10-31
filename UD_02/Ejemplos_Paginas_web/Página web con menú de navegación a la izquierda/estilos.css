@@ -1,0 +1,89 @@
+
+/***********************************/
+/* Estilos del contenido principal */
+/***********************************/
+
+    main {
+        flex: 1;                    /* Hace que el contenido de la etiqueta main crezca para llenar el espacio disponible ¡¡¡IMPORTANTE!!!*/
+        /* Prueba a quitar la línea de flex: 1; para ver qué ocurre */
+        padding: 0 2rem 2rem 2rem;  /* Añade un relleno de 2rem alrededor del contenido principal */
+    }
+
+    .contenido {
+        display: flex;              /* Utiliza Flexbox para alinear los elementos del menú de navegación y el contenido a la derecha */
+    }
+
+/***********************************/
+/* Estilos del cuerpo de la página */
+/***********************************/
+
+    body {
+        /* Estos son los estilos que van a hacer que el body se configure correctamente */
+        min-height: 100vh;                  /* Asegura que la altura mínima de la página sea la del viewport (pantalla) */
+        margin: 0;                          /* Elimina el margen por defecto de todos los elementos */
+        padding: 0;
+        box-sizing: border-box;             /* Asegura que el padding y los bordes no aumenten el ancho/alto total del elemento */
+        display: flex;                      /* Utiliza Flexbox para alinear los elementos de la lista en una fila */
+        flex-direction: column;             /* Alinea los hijos (cabecera, navegación, etc.) verticalmente */
+        /********************************************************************************/
+        font-family: 'Arial', sans-serif;   /* Define la fuente principal de la página */
+        line-height: 1.6;                   /* Establece la altura de línea (espacio entre líneas de texto) */
+        background-color: #F4F4F4;        /* Aplica un color de fondo claro al cuerpo de la página */
+    }
+
+/**************************/
+/* Estilos del encabezado */
+/**************************/
+
+    header {
+        background-color: #4CAF50;  /* Establece un color de fondo verde para la cabecera */
+        color: white;               /* Define el color del texto de la cabecera como blanco */
+        text-align: center;           /* Alinea al centro el texto de la cabecera */
+    }
+
+/*****************************/
+/* Estilos del pie de página */
+/*****************************/
+
+    footer {
+        background-color: #4CAF50;  /* Aplica el mismo color verde de la cabecera al pie de página */
+        color: white;               /* Establece el color del texto del pie de página en blanco */
+        text-align: center;           /* Centra el texto en el pie de página */
+        font-size: 0.9rem;            /* Define un tamaño de fuente más pequeño para el texto del pie de página */
+    }
+
+/*************************************************/
+/* Estilos del menú de navegación a la izquierda */
+/*************************************************/
+
+    /* Estilos del menú de navegación */
+    .menu_navegacion_izquierda {
+        flex: 1;                    /* Toma el 1/5 del espacio disponible */
+        padding: 20px;              /* Añade un relleno de 20 píxeles al menú de navegación ¡¡¡IMPORTANTE!!!*/
+        box-sizing: border-box;     /* Incluir el padding en el cálculo del ancho */
+    }
+
+    .menu_navegacion_izquierda h2 {
+        font-style: italic;     /* El texto de menú de navegación está en cursiva */
+    }
+
+    /* Estilos de la lista del menú de navegación */
+    .menu_navegacion_izquierda ul {
+        list-style-type: none;  /* Elimina los puntos o viñetas de la lista del menú */
+        padding: 0;             /* Sin padding */
+    }
+
+    /* Estilos de los elementos de la lista del menú de navegación */
+    .menu_navegacion_izquierda ul li {
+        margin: 10px 0; /* Añade un margen horizontal entre cada elemento del menú */
+    }
+
+/***************************************************/
+/* Estilos del contenido a la derecha de la página */
+/***************************************************/
+
+    .contenido_derecha {
+        flex: 5;                    /* Toma 1/5 del espacio disponible */
+        padding: 20px;              /* Se agrega relleno de 20px en todas direcciones */
+        box-sizing: border-box;     /* Incluir el padding en el cálculo del ancho */
+    }

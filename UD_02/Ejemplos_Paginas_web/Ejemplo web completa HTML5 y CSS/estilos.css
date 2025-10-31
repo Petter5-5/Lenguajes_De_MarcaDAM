@@ -1,0 +1,106 @@
+
+/************************/
+/* Estilos para el main */
+/************************/
+
+    main {
+        flex: 1;                    /* Hace que el contenido de la etiqueta main crezca para llenar el espacio disponible ¡¡¡IMPORTANTE!!!*/
+        /* Prueba a quitar la línea de flex: 1; para ver qué ocurre */
+        padding: 0 2rem 2rem 2rem;  /* Añade un relleno de 2rem alrededor del contenido principal */
+    }
+
+/***********************************/
+/* Estilos del cuerpo de la página */
+/***********************************/
+
+    body {
+        /* Estos son los estilos que van a hacer que el body se configure correctamente */
+        min-height: 100vh;                  /* Asegura que la altura mínima de la página sea la del viewport (pantalla) */
+        margin: 0;                          /* Elimina el margen por defecto de todos los elementos */
+        padding: 0;
+        box-sizing: border-box;             /* Asegura que el padding y los bordes no aumenten el ancho/alto total del elemento */
+        display: flex;                      /* Utiliza Flexbox para alinear los elementos de la lista en una fila */
+        flex-direction: column;             /* Alinea los hijos (cabecera, navegación, etc.) verticalmente */
+        /********************************************************************************/
+        font-family: 'Arial', sans-serif;   /* Define la fuente principal de la página */
+        line-height: 1.6;                   /* Establece la altura de línea (espacio entre líneas de texto) */
+        background-color: #F4F4F4;        /* Aplica un color de fondo claro al cuerpo de la página */
+    }
+
+/***************************************/
+/* Estilos de la cabecera de la página */
+/***************************************/
+
+    header {
+        background-color: #333;     /* Establece un color de fondo para la cabecera */
+        color: white;               /* Define el color del texto de la cabecera como blanco */
+        text-align: center;           /* Alinea el texto de la cabecera al centro */
+    }
+
+/*****************************/
+/* Estilos del pie de página */
+/*****************************/
+
+    footer {
+        background-color: #333;     /* Aplica color de fondo al pie de página */
+        color: white;               /* Establece el color del texto del pie de página en blanco */
+        text-align: center;           /* Centra el texto en el pie de página */
+        font-size: 0.9rem;            /* Define un tamaño de fuente más pequeño para el texto del pie de página */
+    }
+
+    /* Estilos del enlace de privacidad que hay en el pie de página */
+    .enlaceprivacidad {
+        color: #DDD;    /* Aplica color al texto del enlace */
+    }
+
+/**********************************/
+/* Estilos del menú de navegación */
+/**********************************/
+
+    /* Estilos del menú de navegación */
+    .menu_navegacion_arriba {
+        background-color: #555;     /* Aplica un color de fondo gris oscuro al área de navegación */
+        padding: 1rem 0;              /* Añade un relleno vertical de 1rem al menú de navegación */
+    }
+
+    /* Estilos de la lista del menú de navegación */
+    .menu_navegacion_arriba ul {
+        list-style: none;           /* Elimina los puntos o viñetas de la lista del menú */
+        display: flex;              /* Utiliza Flexbox para alinear los elementos de la lista en una fila */
+        justify-content: center;    /* Centra los elementos de la lista horizontalmente */
+    }
+
+    /* Estilos de los elementos de la lista del menú de navegación */
+    .menu_navegacion_arriba ul li {
+        margin: 0 1.5rem;   /* Añade un margen horizontal de 1.5rem entre cada elemento del menú */
+    }
+
+    /* Estilos del enlace de los elementos de la lista del menú de navegación */
+    .menu_navegacion_arriba ul li a {
+        color: white;           /* Color de texto para el enlace */
+    }
+
+/******************************************/
+/* Estilos para el contenido de la página */
+/******************************************/
+
+    .contenido {
+        padding: 20px;  /* Añade un relleno de 20 píxeles */
+    }
+
+    .contenido h2 {
+        color: #333;        /* Color para el texto */
+        text-align: center;   /* Centra el texto */
+    }
+
+    .articulo {
+        background-color: white;                    /* Color de fondo */
+        padding: 20px;                                /* Añade un relleno de 20 píxeles */
+        margin-bottom: 20px;                          /* Aplica un margen inferior de 20 píxeles */
+        border-radius: 10px;                          /* Redondea el borde con 10 píxeles */
+        box-shadow: 0px 0px 5px rgba(0,0,0,0.1);    /* Añade sombra */
+    }
+
+    .articulo h3 {
+        font-style: italic;     /* El texto del título del artículo está en cursiva */
+    }

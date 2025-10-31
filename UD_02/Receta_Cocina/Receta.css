@@ -1,0 +1,81 @@
+
+body{
+    max-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+.h1_header{
+    color: white;
+}
+
+header{
+    background-color: #F5A623;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+}
+
+/*tengo puesto height: auto; y min-height 65.9vh asi porque de la forma que tu quieres no 
+me da el resultado y he busacado en internet, chatgpt y lo que nos distes de recursos y todos me dicen lo mismo 
+que es lo que tu dices.*/
+main{
+    background-color: beige;
+    flex: 1;
+    padding: 2rem;
+    height: auto;
+    min-height: 65.9vh;
+}
+
+footer{
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.receta{
+    background-color: white;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: auto;
+}
+
+.imagen_receta{
+    text-align: center;
+    text-align: center;
+    margin-bottom: 20px;
+    max-width: 100%;
+}
+
+img{
+    border-radius: 10px;
+}
+
+h1,h2{
+    color: #F5A623;
+}
+
+ul{
+    list-style: square;
+    padding-left: 20px;
+}
+
+li{
+    margin-bottom: 10px;
+}
+
+.elaboracion{
+    line-height: 1.6;
+}

@@ -1,0 +1,88 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #F4F4F4;
+}
+
+main{
+    flex: 1;
+    margin: 0 2rem 2rem 2rem;
+}
+
+header{
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+}
+
+.cabecera_imagen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen_Milhouse{
+    height: 100px;
+    width: 100px;
+    margin-right: 15px;
+}
+
+h1{
+    text-align: center;
+}
+
+.Contenedor_tarjetas_productos{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 10px;
+}
+
+.tarjeta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #CCC;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 300px;
+    background-color: #F9F9F9;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.tarjeta img{
+    max-width: 75%;
+    border-radius: 10px;
+}
+
+.tarjeta, h2{
+    color: #333;
+
+}
+
+.descripcionproducto{
+    color: #777;
+}
+
+.precio{
+    font-size: 1.25rem;
+    color: #E74C3C;
+}
+
+footer{
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.tarjeta:hover{
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

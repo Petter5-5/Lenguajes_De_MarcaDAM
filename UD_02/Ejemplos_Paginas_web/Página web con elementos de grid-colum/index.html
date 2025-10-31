@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <meta name="description" content="Página básica con HTML5 y CSS3">
+            <meta name="author" content="Francisco Jesús Delgado Almirón">
+            <link rel="stylesheet" href="estilos.css">
+            <title>Ejemplos de grid-container</title>
+    </head>
+    <body>
+        <header>
+            <h1>Ejemplos de grid-container</h1>
+            <p>Aquí vamos a ver cómo configurar correctamente un grid-container en CSS3</p>
+        </header>
+    
+        <main>
+            <div class="contenedor-grid">
+                <h1>Ejemplo de grid-container con elementos no proporcionales</h1>
+                <div class="grid-container">
+                    <div class="item-desigual-1">Item 1 (Columna 1 a 2) - grid-column: 1 / 3;</div>
+                    <div class="item-desigual-2">Item 2 (Columna 3 a 4) - grid-column: 3 / 5;</div>
+                    <div class="item-desigual-3">Item 3 (Columna 1 a 3) - grid-column: span 3;</div>
+                    <div class="item-desigual-4">Item 4 (Ocupa solo 1 columna)</div>
+                </div>
+            </div>
+
+            <div class="contenedor-grid">
+                <h1>Ejemplo de grid-container con elementos proporcionales dividido en 4 columnas</h1>
+                <div class="grid-container">
+                    <div class="item-proporcional">
+                        <p class="description">Item proporcional (Ocupa solo 1 columna)</p>
+                    </div>
+                    <div class="item-proporcional">
+                        <p class="description">Item proporcional (Ocupa solo 1 columna)</p>
+                    </div>
+                    <div class="item-proporcional">
+                        <p class="description">Item proporcional (Ocupa solo 1 columna)</p>
+                    </div>
+                    <div class="item-proporcional">
+                        <p class="description">Item proporcional (Ocupa solo 1 columna)</p>
+                    </div>
+                    <div class="item-proporcional">
+                        <p class="description">Item proporcional (Ocupa solo 1 columna)</p>
+                    </div>
+                    <div class="item-proporcional">
+                        <p class="description">Item proporcional (Ocupa solo 1 columna)</p>
+                    </div>
+                    <div class="item-proporcional">
+                        <p class="description">Item proporcional (Ocupa solo 1 columna)</p>
+                    </div>
+                    <div class="item-proporcional">
+                        <p class="description">Item proporcional (Ocupa solo 1 columna)</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Mi Página Web. Todos los derechos reservados.</p>
+        </footer>
+    </body>
+</html>
