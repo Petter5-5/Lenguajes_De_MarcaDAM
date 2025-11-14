@@ -1,0 +1,161 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header{
+    background-color: #ff0000;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.izquierda{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.izquierda h1{
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.izquierda img{
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.derecha{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.derecha input{
+    padding-right: 5px;
+    height: 30px;
+    font-size: 1.1rem;
+    width: 300px;
+    border: 1px #ccc;
+    border-radius: 2px;
+}
+
+.derecha button {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    margin-left: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.derecha img{
+    width: 20px;
+    height: 20px;
+}
+
+.derecha button:hover{
+    background-color: #f1f1f1;
+    border: #bbb;
+}
+
+main{
+    flex: 1;
+    padding: 0 2rem 2rem 2rem;
+    display: flex;
+}
+
+.menu_Navegacion{
+    background-color: #f1f1f1;
+    padding: 20px;
+    min-width: 20%;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu_Navegacion ul{
+    list-style: none;
+    padding: 0;
+}
+
+.menu_Navegacion li{
+    display: flex;
+    align-items: center;
+    padding:  10px;
+    cursor: pointer;
+}
+
+.menu_Navegacion img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.menu_Navegacion p{
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.videos{
+    padding: 20px;
+    min-width: 80%;
+}
+
+.videos-card{
+    background-color: #fff;
+    border: 1px, solid,  #DDD;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.videos-card h2{
+    text-align: center;
+    margin-top: 20px;
+    color: #444;
+}
+
+.videos-card iframe{
+    width: 560px;
+    height: 315px;
+}
+
+.videos-card video audio{
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+
+footer{
+    background-color: #ff0000;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer a{
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+
+footer a:hover{
+    text-decoration: underline;
+}
