@@ -50,11 +50,21 @@
     }
     
     .contenido {
-        position: absolute;
-        bottom: 40px;
-        left: 30px;
-        font-size: 25px;
-        padding: 20px;
-        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         transition: transform 0.6s ease;
+    }
+    
+    .contenido h1{
+        font-weight: bold;
+        font-size: 50px;
+        padding: 20px;
+        background-color: black;
+        box-shadow: 1px 1px 3px 10px #6b0000;
+    }
+
+    .menu.colapsado{
+        transform: scale(0.5) translate(300px, -100px);
+        opacity: 0.6;
     }
