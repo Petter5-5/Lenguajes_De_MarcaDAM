@@ -32,6 +32,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         margin: 0 auto;
+        transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .opcion {
@@ -41,6 +42,7 @@
         border-radius: 10px;
         cursor: pointer;
         font-size: 18px;
+        text-shadow: 0px 2px 2px black;
         transition: transform 0.3s ease;
     }
     
@@ -67,4 +69,30 @@
     .menu.colapsado{
         transform: scale(0.5) translate(300px, -100px);
         opacity: 0.6;
+    }
+
+    .oculto{
+        visibility: hidden;
+
+        width: 0px;
+        height: 0px;
+        transform: scale(0.8);
+        cursor: none;
+    }
+
+    .visible{
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+    }
+
+    .menu2{
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.5);
+        padding: 15px;
+        border-radius: 10px;
+        backdrop-filter: blur(4px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
     }
