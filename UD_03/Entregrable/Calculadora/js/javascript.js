@@ -28,54 +28,75 @@ const punto = document.getElementById("punto");
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    var numeroFinal = 0;
-    var numeroFinal2 = 0;
+    var prenumeroFinal1 = 0;
+    var prenumeroFinal2 = 0;
+    var postnumeroFinal1 = 0;
+    var postnumeroFinal2 = 0;
+    var numeroEntero1 = 0;
+    var numeroEntero2 = 0;
+    var salida = 0;
     var operador = false;
     var puntito = false;
     var operacion = "";
-    var contador_puntitos = 1;
+    var contador_puntitos1 = 0;
+    var contador_puntitos2 = 0;
 
     function actualizarPantalla()
     {
-        if(operador)
-            pantalla_calculadora.textContent = `${numeroFinal2}`;
+        if(!puntito)
+        {
+            if(!operador)
+                pantalla_calculadora.textContent = `${prenumeroFinal1}`;
+            else
+                pantalla_calculadora.textContent = `${prenumeroFinal2}`;
+        }
         else
-            pantalla_calculadora.textContent = `${numeroFinal}`;
-
+        {
+            if(!operador)
+            {
+                if(postnumeroFinal1 == 0 && contador_puntitos1 == 0)
+                    pantalla_calculadora.textContent = `${prenumeroFinal1}.`;
+                else
+                    pantalla_calculadora.textContent = `${prenumeroFinal1}.${postnumeroFinal1}`;
+            }
+            else
+            {
+                if(postnumeroFinal2 == 0 && contador_puntitos2 == 0)
+                    pantalla_calculadora.textContent = `${prenumeroFinal2}.`;
+                else
+                    pantalla_calculadora.textContent = `${prenumeroFinal2}.${postnumeroFinal2}`;
+            } 
+        }
     }
 
     function mostrarNumeroPantalla(num)
     {
-        var divisor = Math.pow(10,-contador_puntitos);
         if(!puntito)
         {
             if(!operador)
             {
-                numeroFinal *= 10;
-                numeroFinal += num;
+                prenumeroFinal1 *= 10;
+                prenumeroFinal1 += num;
             }
             else
             {
-                numeroFinal2 *= 10;
-                numeroFinal2 += num;
+                prenumeroFinal2 *= 10;
+                prenumeroFinal2 += num;
             }
         }
         else
         {
             if(!operador)
             {
-                
-                num *= divisor;
-                num = num.toFixed(contador_puntitos)
-                numeroFinal += num;
-                contador_puntitos++;
+                postnumeroFinal1 *= 10;
+                postnumeroFinal1 += num;
+                contador_puntitos1++;
             }
             else
             {
-                num *= divisor;
-                num = num.toFixed(contador_puntitos)
-                numeroFinal2 += num;
-                contador_puntitos++;
+                postnumeroFinal2 *= 10;
+                postnumeroFinal2 += num;
+                contador_puntitos2++;
             }
         }
 
@@ -84,29 +105,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function retrocede()
     {
-        if(operador)
-            numeroFinal2 = Math.trunc(numeroFinal2 / 10);
+        if(!operador)
+            prenumeroFinal1 = Math.trunc(prenumeroFinal1 / 10);
         else
-            numeroFinal = Math.trunc(numeroFinal / 10);
+            prenumeroFinal2 = Math.trunc(prenumeroFinal2 / 10);
         actualizarPantalla();
     }
 
     function borraEntrada()
     {
-        if(operador)
-            numeroFinal2 = 0;
+        if(!operador)
+            prenumeroFinal1 = 0;
         else
-            numeroFinal = 0;
-        contador_puntitos = 10;
+            prenumeroFinal2 = 0;
+        contador_puntitos1 = 0;
+        contador_puntitos1 = 0;
         puntito = false;
         actualizarPantalla();
     }
 
     function borrarTodo()
     {
-        numeroFinal = 0;
-        numeroFinal2 = 0;
-        contador_puntitos = 10;
+        prenumeroFinal1 = 0;
+        prenumeroFinal2 = 0;
+        contador_puntitos1 = 0;
+        contador_puntitos1 = 0;
         operador = false;
         puntito = false;
         actualizarPantalla();
@@ -117,30 +140,45 @@ document.addEventListener("DOMContentLoaded", () => {
         switch(operacion)
             {
                 case "suma":
-                    numeroFinal = numeroFinal + numeroFinal2;
-                    numeroFinal2 = 0;
+                    numeroEntero1 = juntarNumeros(prenumeroFinal1, postnumeroFinal1, contador_puntitos1);
+                    numeroEntero2 = juntarNumeros(prenumeroFinal2, postnumeroFinal2, contador_puntitos2);   
+                    salida = numeroEntero1 + numeroEntero2;
                     operador = false;
                     actualizarPantalla();
                 break;
                 case "menos":
-                    numeroFinal = numeroFinal - numeroFinal2;
-                    numeroFinal2 = 0;
+                    prenumeroFinal1 = prenumeroFinal1 - prenumeroFinal2;
+                    prenumeroFinal2 = 0;
                     operador = false;
                     actualizarPantalla();
                 break;
                 case "multiplicar":
-                    numeroFinal = numeroFinal * numeroFinal2;
-                    numeroFinal2 = 0;
+                    numeroEntero1 = juntarNumeros(prenumeroFinal1, postnumeroFinal1, contador_puntitos1);
+                    numeroEntero2 = juntarNumeros(prenumeroFinal2, postnumeroFinal2, contador_puntitos2);
+                    salida = numeroEntero1 * numeroEntero2;
+                    //
+                    console.log(salida);
+                    prenumeroFinal1 = rodadorComas(salida);
+                    //
+                    console.log(prenumeroFinal1);
+                    prenumeroFinal1 = correccion2();
+                    //
+                    console.log(prenumeroFinal1);
+                    postnumeroFinal2 = correcion();
+                    //
+                    console.log(postnumeroFinal2);
+                    prenumeroFinal2 = 0;
                     operador = false;
                     actualizarPantalla();
+                    puntito = false;
                 break;
                 case "dividir":
-                    numeroFinal = numeroFinal / numeroFinal2;
-                    numeroFinal2 = 0;
+                    prenumeroFinal1 = prenumeroFinal1 / prenumeroFinal2;
+                    prenumeroFinal2 = 0;
                     operador = false;
                     actualizarPantalla();
                 break;
-                case "inversor":
+                /*case "inversor":
                     numeroFinal = 1 / numeroFinal;
                     puntito = false;
                     actualizarPantalla();
@@ -154,10 +192,30 @@ document.addEventListener("DOMContentLoaded", () => {
                     numeroFinal = Math.sqrt(numeroFinal);
                     puntito = false;
                     actualizarPantalla();
-                break;
+                break;*/
             }
     }
 
+    function juntarNumeros(prePunto, postPunto, contador_puntitos)
+    {
+        return postPunto += (prePunto * Math.pow(10, contador_puntitos));
+    }
+
+    function rodadorComas(salida)
+    {
+
+        return salida * Math.pow(10, -(contador_puntitos1 + contador_puntitos2));
+    }
+
+    function correccion2(prenumeroFinal1)
+    {
+        return Math.trunc(prenumeroFinal1 * Math.pow(10, (contador_puntitos1 + contador_puntitos2))) * Math.pow(10, -(contador_puntitos1 + contador_puntitos2));
+    }
+
+    function correcion()
+    {
+        return (prenumeroFinal1 % 1) * Math.pow(10, (contador_puntitos1 + contador_puntitos2));
+    }
     //Comodines
     if(btnretrocede)
         {
@@ -201,7 +259,6 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             suma.addEventListener("click", () => {
                 operador = true;
-                contador_puntitos = 10;
                 operacion = "suma";
                 puntito = false;
                 actualizarPantalla();
@@ -212,7 +269,6 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             menos.addEventListener("click", () => {
                 operador = true;
-                contador_puntitos = 10;
                 operacion = "menos";
                 puntito = false;
                 actualizarPantalla();
@@ -223,7 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             multiplicar.addEventListener("click", () => {
                 operador = true;
-                contador_puntitos = 10;
                 operacion = "multiplicar";
                 puntito = false;
                 actualizarPantalla();
@@ -234,7 +289,6 @@ document.addEventListener("DOMContentLoaded", () => {
         {
             dividir.addEventListener("click", () => {
                 operador = true;
-                contador_puntitos = 10;
                 operacion = "dividir";
                 puntito = false;
                 actualizarPantalla();
