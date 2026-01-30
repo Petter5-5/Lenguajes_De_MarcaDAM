@@ -28,199 +28,186 @@ const punto = document.getElementById("punto");
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    var prenumeroFinal1 = 0;
-    var prenumeroFinal2 = 0;
-    var postnumeroFinal1 = 0;
-    var postnumeroFinal2 = 0;
-    var numeroEntero1 = 0;
-    var numeroEntero2 = 0;
-    var salida = 0;
-    var operador = false;
-    var puntito = false;
-    var operacion = "";
-    var contador_puntitos1 = 0;
-    var contador_puntitos2 = 0;
+    var numero1 = "";
+    var numero2 = "";
+    var segundoNumero = false;
+    var resultado = false;
+    var operador = "";
+    
+    function deshabilitarPunto()
+    {
+
+    }
+
+    function habilitarPunto()
+    {
+
+    }
 
     function actualizarPantalla()
     {
-        if(!puntito)
-        {
-            if(!operador)
-                pantalla_calculadora.textContent = `${prenumeroFinal1}`;
+            if(!segundoNumero)
+                pantalla_calculadora.textContent = `${numero1}`;
             else
-                pantalla_calculadora.textContent = `${prenumeroFinal2}`;
-        }
-        else
-        {
-            if(!operador)
-            {
-                if(postnumeroFinal1 == 0 && contador_puntitos1 == 0)
-                    pantalla_calculadora.textContent = `${prenumeroFinal1}.`;
-                else
-                    pantalla_calculadora.textContent = `${prenumeroFinal1}.${postnumeroFinal1}`;
-            }
-            else
-            {
-                if(postnumeroFinal2 == 0 && contador_puntitos2 == 0)
-                    pantalla_calculadora.textContent = `${prenumeroFinal2}.`;
-                else
-                    pantalla_calculadora.textContent = `${prenumeroFinal2}.${postnumeroFinal2}`;
-            } 
-        }
+                pantalla_calculadora.textContent = `${numero2}`;
     }
 
-    function mostrarNumeroPantalla(num)
+    function mostrarNumeroPantalla(numero)
     {
-        if(!puntito)
+        if(resultado)
+            {
+                document.getElementById("pantalla_calculadora").style.color = "#FFFFFF"
+                numero1 = "";
+                numero2 = "";
+                console.log("hola");
+            }
+
+        if(!segundoNumero)
         {
-            if(!operador)
-            {
-                prenumeroFinal1 *= 10;
-                prenumeroFinal1 += num;
-            }
-            else
-            {
-                prenumeroFinal2 *= 10;
-                prenumeroFinal2 += num;
-            }
+            if(numero1.length < 12)
+                numero1  += numero;
         }
         else
         {
-            if(!operador)
-            {
-                postnumeroFinal1 *= 10;
-                postnumeroFinal1 += num;
-                contador_puntitos1++;
-            }
-            else
-            {
-                postnumeroFinal2 *= 10;
-                postnumeroFinal2 += num;
-                contador_puntitos2++;
-            }
+            if(numero2.length < 12)
+                numero2 += numero;
         }
-
-        actualizarPantalla();
-    };
-
-    function retrocede()
-    {
-        if(!operador)
-            prenumeroFinal1 = Math.trunc(prenumeroFinal1 / 10);
-        else
-            prenumeroFinal2 = Math.trunc(prenumeroFinal2 / 10);
         actualizarPantalla();
     }
 
-    function borraEntrada()
+    function mostrarPuntoPantalla()
     {
-        if(!operador)
-            prenumeroFinal1 = 0;
+        if(!segundoNumero)
+        {
+            numero1  += ".";
+        }
         else
-            prenumeroFinal2 = 0;
-        contador_puntitos1 = 0;
-        contador_puntitos1 = 0;
-        puntito = false;
+        {
+            numero2 += ".";
+        }
+        actualizarPantalla();
+    }
+
+    function manejarOperador()
+    {
+
+    }
+
+    function calcularOperacion()
+    {
+
+    }
+
+    function pantallaColorNormal()
+    {
+
+    }
+
+    function borrarEntrada()
+    {
+        if(!segundoNumero)
+        {
+            numero1  = "";
+        }
+        else
+        {
+            numero2 = "";
+        }
         actualizarPantalla();
     }
 
     function borrarTodo()
     {
-        prenumeroFinal1 = 0;
-        prenumeroFinal2 = 0;
-        contador_puntitos1 = 0;
-        contador_puntitos1 = 0;
-        operador = false;
-        puntito = false;
+        numero1  = "";
+        numero2  = "";
         actualizarPantalla();
     }
 
-    function calcularOperacion()
+    function retroceder()
     {
-        switch(operacion)
-            {
-                case "suma":
-                    numeroEntero1 = juntarNumeros(prenumeroFinal1, postnumeroFinal1, contador_puntitos1);
-                    numeroEntero2 = juntarNumeros(prenumeroFinal2, postnumeroFinal2, contador_puntitos2);   
-                    salida = numeroEntero1 + numeroEntero2;
-                    operador = false;
-                    actualizarPantalla();
-                break;
-                case "menos":
-                    prenumeroFinal1 = prenumeroFinal1 - prenumeroFinal2;
-                    prenumeroFinal2 = 0;
-                    operador = false;
-                    actualizarPantalla();
-                break;
-                case "multiplicar":
-                    numeroEntero1 = juntarNumeros(prenumeroFinal1, postnumeroFinal1, contador_puntitos1);
-                    numeroEntero2 = juntarNumeros(prenumeroFinal2, postnumeroFinal2, contador_puntitos2);
-                    salida = numeroEntero1 * numeroEntero2;
-                    //
-                    console.log(salida);
-                    prenumeroFinal1 = rodadorComas(salida);
-                    //
-                    console.log(prenumeroFinal1);
-                    prenumeroFinal1 = correccion2();
-                    //
-                    console.log(prenumeroFinal1);
-                    postnumeroFinal2 = correcion();
-                    //
-                    console.log(postnumeroFinal2);
-                    prenumeroFinal2 = 0;
-                    operador = false;
-                    actualizarPantalla();
-                    puntito = false;
-                break;
-                case "dividir":
-                    prenumeroFinal1 = prenumeroFinal1 / prenumeroFinal2;
-                    prenumeroFinal2 = 0;
-                    operador = false;
-                    actualizarPantalla();
-                break;
-                /*case "inversor":
-                    numeroFinal = 1 / numeroFinal;
-                    puntito = false;
-                    actualizarPantalla();
-                break;
-                case "cuadrado":
-                    numeroFinal = Math.pow(numeroFinal, 2);
-                    puntito = false;
-                    actualizarPantalla();
-                break;
-                case "raiz":
-                    numeroFinal = Math.sqrt(numeroFinal);
-                    puntito = false;
-                    actualizarPantalla();
-                break;*/
-            }
+        if(!segundoNumero)
+        {
+            numero1  = numero1.substring(0, numero1.length - 1);
+        }
+        else
+        {
+            numero2 = numero2.substring(0, numero2.length - 1);
+        }
+        actualizarPantalla();
     }
 
-    function juntarNumeros(prePunto, postPunto, contador_puntitos)
+    function operacionInmediata()
     {
-        return postPunto += (prePunto * Math.pow(10, contador_puntitos));
+        numero1 = parseFloat(numero1, 10);
+        console.log(numero1)
+        numero2 = parseFloat(numero2, 10);
+        resultado = true;
+        segundoNumero = false;
+        switch(operador)
+        {
+            case "suma": 
+                    numero1 = (numero1 + numero2).toString().substring(0, 12);
+                    actualizarPantalla();
+            break;
+            case "restar": 
+                    numero1 = (numero1 - numero2).toString().substring(0, 12);
+                    actualizarPantalla();
+            break;
+            case "multiplicar": 
+                    numero1 = (numero1 * numero2).toString().substring(0, 12);
+                    actualizarPantalla();
+            break;
+            case "dividir": 
+                    numero1 = (numero1 / numero2).toString().substring(0, 12);
+                    actualizarPantalla();
+            break;
+            case "inversor":
+                    numero1 = (1/numero1).toString().substring(0, 12);
+                    actualizarPantalla();
+            break;
+            case "cuadrado":
+                    numero1 = (Math.pow(numero1, 2)).toString().substring(0, 12);
+                    actualizarPantalla();
+            break;
+            case "raiz":
+                    numero1 = (Math.sqrt(numero1)).toString().substring(0, 12);
+                    actualizarPantalla();
+            break;
+        }
     }
 
-    function rodadorComas(salida)
+    function aplicarColorResultado()
     {
-
-        return salida * Math.pow(10, -(contador_puntitos1 + contador_puntitos2));
+        switch(operador)
+        {
+            case "suma":
+                    document.getElementById("pantalla_calculadora").style.color = "#4bff4b"
+            break;
+            case "restar":
+                    document.getElementById("pantalla_calculadora").style.color = "#ff884b"
+            break;
+            case "multiplicar":
+                    document.getElementById("pantalla_calculadora").style.color = "#ffbf00"
+            break;
+            case "dividir":
+                    document.getElementById("pantalla_calculadora").style.color = "#00c8ff"
+            break;
+            case "inversor":
+                    document.getElementById("pantalla_calculadora").style.color = "#b084ff"
+            break;
+            case "cuadrado":
+                    document.getElementById("pantalla_calculadora").style.color = "#ff4bd8"
+            break;
+            case "raiz":
+                    document.getElementById("pantalla_calculadora").style.color = "#00ffbf"
+            break;
+        }
     }
 
-    function correccion2(prenumeroFinal1)
-    {
-        return Math.trunc(prenumeroFinal1 * Math.pow(10, (contador_puntitos1 + contador_puntitos2))) * Math.pow(10, -(contador_puntitos1 + contador_puntitos2));
-    }
-
-    function correcion()
-    {
-        return (prenumeroFinal1 % 1) * Math.pow(10, (contador_puntitos1 + contador_puntitos2));
-    }
-    //Comodines
     if(btnretrocede)
         {
             btnretrocede.addEventListener("click", () => {
-                retrocede();
+                retroceder();
             });
         }
 
@@ -234,22 +221,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if(resultado)
         {
             resultado.addEventListener("click", () => {
-                calcularOperacion();
+                aplicarColorResultado();
+                operacionInmediata();
             });
         }
 
     if(btnBorraEntrada)
         {
             btnBorraEntrada.addEventListener("click", () => {
-                borraEntrada();
+                borrarEntrada();
             });
         }
 
     if(punto)
         {
             punto.addEventListener("click", () => {
-                puntito = true;
-
+                mostrarPuntoPantalla();
                 actualizarPantalla();
             });
         }
@@ -258,9 +245,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if(suma)
         {
             suma.addEventListener("click", () => {
-                operador = true;
-                operacion = "suma";
-                puntito = false;
+                operador = "suma";
+                segundoNumero = true;
                 actualizarPantalla();
             });
         }
@@ -268,9 +254,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if(menos)
         {
             menos.addEventListener("click", () => {
-                operador = true;
-                operacion = "menos";
-                puntito = false;
+                operador = "restar";
+                segundoNumero = true;
                 actualizarPantalla();
             });
         }
@@ -278,9 +263,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if(multiplicar)
         {
             multiplicar.addEventListener("click", () => {
-                operador = true;
-                operacion = "multiplicar";
-                puntito = false;
+                operador = "multiplicar";
+                segundoNumero = true;
                 actualizarPantalla();
             });
         }
@@ -288,9 +272,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if(dividir)
         {
             dividir.addEventListener("click", () => {
-                operador = true;
-                operacion = "dividir";
-                puntito = false;
+                operador = "dividir";
+                segundoNumero = true;
                 actualizarPantalla();
             });
         }
@@ -298,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(inversor)
         {
             inversor.addEventListener("click", () => {
-                operacion = "inversor";
+                operador = "inversor";
                 actualizarPantalla();
             });
         }
@@ -306,7 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(cuadrado)
         {
             cuadrado.addEventListener("click", () => {
-                operacion = "cuadrado";
+                operador = "cuadrado";
                 actualizarPantalla();
             });
         }
@@ -314,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(raiz)
         {
             raiz.addEventListener("click", () => {
-                operacion = "raiz";
+                operador = "raiz";
                 actualizarPantalla();
             });
         }
