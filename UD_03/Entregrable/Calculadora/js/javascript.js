@@ -31,17 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
     var numero1 = "";
     var numero2 = "";
     var segundoNumero = false;
-    var resultado = false;
+    var solucion = false;
     var operador = "";
     
     function deshabilitarPunto()
     {
-
+        document.getElementById("punto").classList.add("desabilitado")
     }
 
     function habilitarPunto()
     {
-
+        document.getElementById("punto").classList.remove("desabilitado")
     }
 
     function actualizarPantalla()
@@ -54,12 +54,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function mostrarNumeroPantalla(numero)
     {
-        if(resultado)
+        if(solucion)
             {
                 document.getElementById("pantalla_calculadora").style.color = "#FFFFFF"
                 numero1 = "";
                 numero2 = "";
-                console.log("hola");
+                operador = "";
+                solucion = false;
             }
 
         if(!segundoNumero)
@@ -79,39 +80,28 @@ document.addEventListener("DOMContentLoaded", () => {
     {
         if(!segundoNumero)
         {
+            if(!numero1.toString().includes("."))
             numero1  += ".";
         }
         else
         {
+            if(!numero2.toString().includes("."))
             numero2 += ".";
         }
-        actualizarPantalla();
     }
-
-    function manejarOperador()
-    {
-
-    }
-
-    function calcularOperacion()
-    {
-
-    }
-
-    function pantallaColorNormal()
-    {
-
-    }
-
     function borrarEntrada()
     {
         if(!segundoNumero)
         {
             numero1  = "";
+            habilitarPunto()
+            pantalla_calculadora.textContent = `0`;
         }
         else
         {
             numero2 = "";
+            habilitarPunto()
+            pantalla_calculadora.textContent = `0`;
         }
         actualizarPantalla();
     }
@@ -120,6 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
     {
         numero1  = "";
         numero2  = "";
+        operador = "";
+        habilitarPunto()
         actualizarPantalla();
     }
 
@@ -128,25 +120,32 @@ document.addEventListener("DOMContentLoaded", () => {
         if(!segundoNumero)
         {
             numero1  = numero1.substring(0, numero1.length - 1);
+            if(!numero1.toString().includes("."))
+                habilitarPunto();
         }
         else
         {
             numero2 = numero2.substring(0, numero2.length - 1);
+            if(!numero2.toString().includes("."))
+                habilitarPunto();
         }
         actualizarPantalla();
     }
 
     function operacionInmediata()
     {
-        numero1 = parseFloat(numero1, 10);
+        numero1 = parseFloat(numero1);
         console.log(numero1)
-        numero2 = parseFloat(numero2, 10);
-        resultado = true;
+        numero2 = parseFloat(numero2);
+        if(isNaN(numero2))
+            numero2 = 0;
+        solucion = true;
         segundoNumero = false;
         switch(operador)
         {
             case "suma": 
                     numero1 = (numero1 + numero2).toString().substring(0, 12);
+                    console.log(numero1)
                     actualizarPantalla();
             break;
             case "restar": 
@@ -158,8 +157,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     actualizarPantalla();
             break;
             case "dividir": 
+                    if(numero2 == 0)
+                    {
+                        document.getElementById("pantalla_calculadora").style.color = "#FF0000"
+                        pantalla_calculadora.textContent = `Error`;
+                    }
+                    else
+                    {
                     numero1 = (numero1 / numero2).toString().substring(0, 12);
                     actualizarPantalla();
+                    }
             break;
             case "inversor":
                     numero1 = (1/numero1).toString().substring(0, 12);
@@ -170,8 +177,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     actualizarPantalla();
             break;
             case "raiz":
+                    if(numero1 < 0 || isNaN(numero1))
+                    {
+                        document.getElementById("pantalla_calculadora").style.color = "#FF0000"
+                        pantalla_calculadora.textContent = `Error`;
+                    }
+                    else
+                    {
                     numero1 = (Math.sqrt(numero1)).toString().substring(0, 12);
                     actualizarPantalla();
+                    }
             break;
         }
     }
@@ -223,6 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
             resultado.addEventListener("click", () => {
                 aplicarColorResultado();
                 operacionInmediata();
+                habilitarPunto();
             });
         }
 
@@ -236,6 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(punto)
         {
             punto.addEventListener("click", () => {
+                deshabilitarPunto();
                 mostrarPuntoPantalla();
                 actualizarPantalla();
             });
@@ -245,36 +262,44 @@ document.addEventListener("DOMContentLoaded", () => {
     if(suma)
         {
             suma.addEventListener("click", () => {
+                if(!operador)
+                    pantalla_calculadora.textContent = `0`;
                 operador = "suma";
                 segundoNumero = true;
-                actualizarPantalla();
+                habilitarPunto();
             });
         }
 
     if(menos)
         {
             menos.addEventListener("click", () => {
+                if(!operador)
+                    pantalla_calculadora.textContent = `0`;
                 operador = "restar";
                 segundoNumero = true;
-                actualizarPantalla();
+                habilitarPunto();
             });
         }
 
     if(multiplicar)
         {
             multiplicar.addEventListener("click", () => {
+                if(!operador)
+                    pantalla_calculadora.textContent = `0`;
                 operador = "multiplicar";
                 segundoNumero = true;
-                actualizarPantalla();
+                habilitarPunto();
             });
         }
 
     if(dividir)
         {
             dividir.addEventListener("click", () => {
+                if(!operador)
+                    pantalla_calculadora.textContent = `0`;
                 operador = "dividir";
                 segundoNumero = true;
-                actualizarPantalla();
+                habilitarPunto();
             });
         }
 
@@ -373,4 +398,93 @@ document.addEventListener("DOMContentLoaded", () => {
                 mostrarNumeroPantalla(num);
             });
         }
+
+    document.addEventListener("keydown", function(e) {
+        switch(e.key) {
+            case "0":
+                var num = 0;
+                mostrarNumeroPantalla(num);
+                break;
+            case "1":
+                var num = 1;
+                mostrarNumeroPantalla(num);
+                break; 
+            case "2":
+                var num = 2;
+                mostrarNumeroPantalla(num);
+                break; 
+            case "3":
+                var num = 3;
+                mostrarNumeroPantalla(num);
+                break; 
+            case "4":
+                var num = 4;
+                mostrarNumeroPantalla(num);
+                break;
+            case "5":
+                var num = 5;
+                mostrarNumeroPantalla(num);
+                break; 
+            case "6": 
+                var num = 6;
+                mostrarNumeroPantalla(num);
+                break;
+            case "7": 
+                var num = 7;
+                mostrarNumeroPantalla(num);
+                break;
+            case "8":
+                var num = 8;
+                mostrarNumeroPantalla(num);
+                break; 
+            case "9":
+                var num = 9;
+                mostrarNumeroPantalla(num);
+                break;
+            case ".":
+                deshabilitarPunto();
+                mostrarPuntoPantalla();
+                actualizarPantalla();
+                break;
+            case "+":
+                if(!operador)
+                    pantalla_calculadora.textContent = `0`;
+                operador = "suma";
+                segundoNumero = true;
+                habilitarPunto();
+                break;
+            case "-":
+                if(!operador)
+                    pantalla_calculadora.textContent = `0`;
+                operador = "restar";
+                segundoNumero = true;
+                habilitarPunto();
+                break;
+            case "*":
+                if(!operador)
+                    pantalla_calculadora.textContent = `0`;
+                operador = "multiplicar";
+                segundoNumero = true;
+                habilitarPunto();
+                break;
+            case "/":
+                e.preventDefault();
+                if(!operador)
+                    pantalla_calculadora.textContent = `0`;
+                operador = "dividir";
+                segundoNumero = true;
+                habilitarPunto();
+                break;
+            case "Enter":
+                aplicarColorResultado();
+                operacionInmediata();
+                habilitarPunto();
+            case "Backspace":
+                retroceder();
+                break;
+            case "Escape":
+                borrarTodo();
+                break;
+        }
+    });
 });
