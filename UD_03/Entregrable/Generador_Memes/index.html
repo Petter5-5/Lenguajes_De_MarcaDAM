@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Yeray Trejo Sánhez">
+        <link rel="stylesheet" href="estilos.css">
+        <link rel="icon" href="imagenes/Awesome_Face.svg" type="image/png">
+    </head>
+    <body>
+        <header>
+            <p><img src="imagenes/meme04.png" class="imagen_cabezera">  Generador de Memes    <img src="imagenes/meme06.png" class="imagen_cabezera"></p>
+        </header>
+        <main>
+            <div class="configuracion">
+                <p>Configuración del Meme</p>
+                <form>
+                    <label for="file">Seleccionar archivo:</label>
+                    <br>
+                    <input type="file" id="file" name="archivo" class="archivo">
+                    <br>
+                    <label for="barra_Superior">Tamaño texto superior (40px)</label>
+                    <br>
+                    <input type="range" id="barra_Superior" name="tamaño_Superior" class="menosColor">
+                    <br>
+                    <label for="color_Superior">Color texto superior</label>
+                    <br>
+                    <input type="color" id="color_Superior" name="color_Superior" class="color">
+                    <br>
+                    <label for="texto_Superiro">Texto superior</label>
+                    <br>
+                    <input type="text" id="texto_Superiro" name="texto_SUperiro" class="menosColor" placeholder="Escribe el texto superiro">
+                    <br>
+                    <label for="barra_Inferior">Tamaño texto superior (40px)</label>
+                    <br>
+                    <input type="range" id="barra_Inferior" name="barra_Inferior" class="menosColor">
+                    <br>
+                    <label for="color_Inferior">Color texto superior</label>
+                    <br>
+                    <input type="color" id="color_Inferior" name="color_Inferior" class="color">
+                    <br>
+                    <label for="texto_inferior">Texto inferior</label>
+                    <br>
+                    <input type="text" id="texto_inferior" name="texto_inferior" class="menosColor" placeholder="Escribe el texto inferior">
+                    <br>
+                    <button class="descargar_Meme" id="descargar_Meme">Descargar Meme</button>
+                </form>
+            </div>
+            <div class="seccion_Meme">
+                <div class="contenedor_Meme">
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>Ejercicio 02 UD 03 - Lenguajes de marcas y sistemas de gestión de información.</p>
+            <p class="autor"><u>Proyecto realizado por:</u> Yeray Trejo Sánchez (Declaro que no he usado IA en el proyecto).</p>
+        </footer>
+    </body>
+</html>
