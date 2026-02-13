@@ -11,41 +11,83 @@ const cpu = document.getElementById("cpu");
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    function mostrarEleccion(eleccion, jugador)
+    function inicializarJuego()
+    {
+
+    }
+
+    function mostrarEleccion(display, eleccion, jugador)
     {
         if(jugador == "Usuario")
         {
             switch(eleccion)
             {
                 case "piedra":
-                    tu.style.display = "";
+                    tu.style.display = display;
                     tu.textContent = `🪨 Piedra`;
                     break;
                 case "papel":
-                    tu.textContent = ``;
+                    tu.style.display = display;
+                    tu.textContent = `📄 Papel`;
                     break;
                 case "tijera":
-                    tu.textContent = ``;
+                    tu.style.display = display;
+                    tu.textContent = `✂️ Tijera`;
                     break;
                 case "lagarto":
-                    tu.textContent = ``;
+                    tu.style.display = display;
+                    tu.textContent = `🦎 Lagarto`;
                     break;
                 case "spock":
-                    tu.textContent = ``;
+                    tu.style.display = display;
+                    tu.textContent = `🖖 Spock`;
                     break;
+                default:
+                    tu.style.display = "none";
+                    tu.textContent = `?`;
+                    break;
+
             }
         }
         else
         {
+            switch(eleccion)
+            {
+                case "piedra":
+                    cpu.style.display = display;
+                    cpu.textContent = `🪨 Piedra`;
+                    break;
+                case "papel":
+                    cpu.style.display = display;
+                    cpu.textContent = `📄 Papel`;
+                    break;
+                case "tijera":
+                    cpu.style.display = display;
+                    cpu.textContent = `✂️ Tijera`;
+                    break;
+                case "lagarto":
+                    cpu.style.display = display;
+                    cpu.textContent = `🦎 Lagarto`;
+                    break;
+                case "spock":
+                    cpu.style.display = display;
+                    cpu.textContent = `🖖 Spock`;
+                    break;
+                default:
+                    cpu.style.display = "none";
+                    cpu.textContent = `?`;
+                    break;
 
+            }
         }
     }
 
     function jugar(eleccionUsuario)
     {
-        mostrarEleccion(eleccionUsuario, "Usuario");
+        var dysplay = "block"
+        mostrarEleccion(dysplay, eleccionUsuario, "Usuario");
         var eleccionCPU = obtenerEleccionCPU();
-        mostrarEleccion(eleccionCPU, "CPU");
+        mostrarEleccion(dysplay, eleccionCPU, "CPU");
         var resultado = calcularResultadoJugada(eleccionUsuario, eleccionCPU);
     }
 
@@ -133,6 +175,26 @@ document.addEventListener("DOMContentLoaded", () => {
             conclusion = "EMPATE";
 
         return conclusion;
+    }
+
+    function reiniciarDisplays()
+    {
+        
+    }
+
+    function mostrarResultadoJugada()
+    {
+
+    }
+
+    function actualizarContadores()
+    {
+
+    }
+
+    function inicializarToolstips()
+    {
+
     }
 
     if(btnPiedra){
