@@ -1,21 +1,65 @@
-<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="author" content="Yeray Trejo Sánchez">
+        <meta name="author" content="Yeray Trejo Sánhez">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="estilos.css">
-        <link rel="icon" type="image/svg+xml" href="imagenes/Awesome_Face.svg">
-        <title>Generador de Memes</title>
+        <link rel="icon" href="imagenes/Awesome_Face.svg" type="image/png">
     </head>
     <body>
         <header>
-
+            <p><img src="imagenes/meme04.png" class="imagen_cabezera" id="meme-izq">  Generador de Memes    <img id="meme-der" src="imagenes/meme06.png" class="imagen_cabezera"></p>
         </header>
         <main>
-
+            <div class="configuracion">
+                <h2>Configuración del Meme</h2>
+                <form>
+                    <label for="file">Seleccionar archivo:</label>
+                    <br>
+                    <input type="file" id="file" name="archivo" class="archivo">
+                    <br>
+                    <label for="barra_Superior" id="labelSuperiro">Tamaño texto superior (40px)</label>
+                    <br>
+                    <input type="range" id="barra_Superior" name="tamaño_Superior" class="menosColor">
+                    <br>
+                    <label for="color_Superior">Color texto superior</label>
+                    <br>
+                    <input type="color" id="color_Superior" name="color_Superior" class="color">
+                    <br>
+                    <label for="texto_Superiro">Texto superior</label>
+                    <br>
+                    <input type="text" id="texto_Superiro" name="texto_SUperiro" class="menosColor" placeholder="Escribe el texto superiro">
+                    <br>
+                    <label for="barra_Inferior" id="labelInferior">Tamaño texto inferior (40px)</label>
+                    <br>
+                    <input type="range" id="barra_Inferior" name="barra_Inferior" class="menosColor">
+                    <br>
+                    <label for="color_Inferior">Color texto inferior</label>
+                    <br>
+                    <input type="color" id="color_Inferior" name="color_Inferior" class="color">
+                    <br>
+                    <label for="texto_inferior">Texto inferior</label>
+                    <br>
+                    <input type="text" id="texto_inferior" name="texto_inferior" class="menosColor" placeholder="Escribe el texto inferior">
+                    <br>
+                    <button class="descargar_Meme" id="descargar_Meme">Descargar Meme</button>
+                </form>
+            </div>
+            <div id="seccion_Meme" class = "invisible" >
+                <div class="contenedor_Meme">
+                    <div class="meme">
+                        <p id="superior" class="superior"></p>
+                        <img id="imagenBase">
+                        <p id="inferior" class="inferior"></p>
+                    </div>
+                </div>
+            </div>
         </main>
         <footer>
-
+            <p>Ejercicio 02 UD 03 - Lenguajes de marcas y sistemas de gestión de información.</p>
+            <p class="autor"><u>Proyecto realizado por:</u> Yeray Trejo Sánchez (Declaro que no he usado IA en el proyecto).</p>
         </footer>
+
+        <script src="js/Código generar meme.js"></script>
     </body>
 </html>
