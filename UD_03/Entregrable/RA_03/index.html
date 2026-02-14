@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Yeray Trejo Sánchez">
+        <title>Piedra, Papel, Tijera, Lagarto, SPOCK</title>
+        <link rel="icon" href="imagenes/spock-hand-gesture.svg" type="image/png">
+        <link rel="stylesheet" href="estilos.css">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <p class="titulo-juego">PIEDRA · PAPEL · TIJERA · LAGARTO · SPOCK</p>
+            <p class="subtitulo-juego">El juego definitivo</p>
+        </header>
+        <main>
+            <div class="paneles-arriba">
+                <div class="panel-seleccion-jugada">
+                    <h2>Elige tu jugada</h2>
+                    <div class="contenedor-elecciones-juego">
+                        <button class="boton-eleccion-jugada" id="piedra"><p class="icono-jugada">🪨</p>Piedra</button>
+                        <button class="boton-eleccion-jugada" id="papel"><p class="icono-jugada">📄</p>Papel</button>
+                        <button class="boton-eleccion-jugada" id="tijera"><p class="icono-jugada">✂️</p>Tijera</button>
+                        <button class="boton-eleccion-jugada" id="lagarto"><p class="icono-jugada">🦎</p>Lagarto</button>
+                        <button class="boton-eleccion-jugada" id="spock"><p class="icono-jugada">🖖</p>Spock</button>
+                    </div>
+                </div>
+                <div class="panel-batalla">
+                    <h2>Batalla</h2>
+                    <div class="contenedor-jugadores">
+                        <div class="jugador"> 
+                            <p class="etiqueta-jugador">Tu</p>
+                            <div class="mostrar-jugada">
+                                <p class="placeholder" id="tu">?</p>
+                            </div>
+                        </div>
+                        <div class="vs-circle">
+                            <p>VS</p>
+                        </div>
+                        <div class="jugador">
+                            <p class="etiqueta-jugador">CPU</p>
+                            <div class="mostrar-jugada">
+                                <p class="placeholder" id="cpu">?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contenedor-resultado">
+                <div class="resultados">
+                    <p class="mensaje-resultado">Estadísticas del juego</p>
+                </div>
+                <div class="estadisticas-juego">
+                    <div class="panel-estadistica">
+                        <p class="valor-estadistica">0</p>
+                        <p class="etiqueta-estadistica">VICTORIAS</p>
+                    </div>
+                    <div class="panel-estadistica">
+                        <p class="valor-estadistica">0</p>
+                        <p class="etiqueta-estadistica">DERROTAS</p>
+                    </div>
+                    <div class="panel-estadistica">
+                        <p class="valor-estadistica">0</p>
+                        <p class="etiqueta-estadistica">EMPATES</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>Proyecto evaluación RA 03 - Lenguajes de marcas y sistemas de gestión de información</p>
+            <p class=""><u>Proyecto realizado por:</u> Yeray Trejo Sánchez (Declaro que no he usado IA en el proyecto)</p>
+        </footer>
+        <script src="js/javascript.js"></script>
+    </body>
+</html>
