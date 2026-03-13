@@ -1,0 +1,42 @@
+body{
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex: 1;
+    margin: 0 0 2rem 0;
+    font-family: "Courier New", monospace;
+}
+
+header{
+    background-color: #CCC806;
+}
+
+.contenedor_cabecera{
+    text-align: center;    
+}
+
+.contenedor_titutlo{
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.contenedor_menu ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.contenedor_menu li{
+    font-family: "Courier New", monospace;
+    font-weight: 500;
+}
+
