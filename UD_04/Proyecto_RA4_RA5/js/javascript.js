@@ -1,16 +1,22 @@
 
-
+/** @brief Endpoint default de la API para poder construir luego url*/
 const ENDPOINT_BASE = "https://apis.codante.io/olympic-games"; 
+/** @brief Endpoint del medallero, devuelve paises ordenados por medallas*/
 const ENDPOINT_MEDALLERO = "https://apis.codante.io/olympic-games/countries";
+/** @brief Endpoint de disciplinas, devuelve la lista de deportes olimpicos*/
 const ENDPOINT_DISCIPLINA = "https://apis.codante.io/olympic-games/disciplines";
 
+/**@brief Página actual que donde se están mostrando los eventos*/
 var pagina_actual = 1;
+/**@brief Número de páginas*/
 var total_paginas = 3;
-
+/**@brief Filtro de la API para los paises por 3 letras USA*/
 var filtro_pais = "";
+/**@brief Filtro de la API para los tipos de disciplina*/
 var filtro_disciplina = "";
+/**@brief Filtro de la API para las fechas*/
 var filtro_fecha = "";
-
+/**@brief Filtro para medallero permitiendome filtrar paises sin tener que llamar a ala API*/
 var todos_los_paises = [];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -28,6 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
         inicializar_botones_medallero();
     }
 
+    /**
+     * @brief Inicializa botones y las constantes necesaria para el index.hmtl
+     * @details Revisa que los botoenes existan y permite usar las funciones
+     *          para el index.html
+     */
     function inicializar_botones()
     {
         const btn_buscar = document.getElementById("btn_buscar");
@@ -65,7 +76,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     cargar_eventos();
             });
     }
-
+    /**
+     * @brief Carga la lista de disciplinas de la API para poder rellenar el select
+     * @details Llama a la URL de disciplina con el fetch y carga todas las diciplinas
+     *          creando el elemnto option con su id, value y el nombre visible
+     */
     function cargar_disciplinas()
     {
         fetch(ENDPOINT_DISCIPLINA)
@@ -96,7 +111,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             });
     }
-    
+    /**
+     * @brief Contruye la URL de los enpoints para los eventos con el filtro
+     * @details Usamos URLSearchParams para poner solo los filtros que tiene un valor
+     *          y incluye el número página actual
+     * @returns {string} Nos devuelve la URL completa para luego usarla en un fetcht al pedirselo
+     */
     function construir_url()
     {
         var params = new URLSearchParams();
@@ -117,7 +137,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return ENDPOINT_BASE + "/events?" + params.toString();
     }
-
+    /**
+     * @brief Carga la lista de la API para después proyectarla
+     * @details primero limpiamos el cotenedor antes de cargarlo,
+     *          segundo, actualizamos el texto de estado y la pagina con los daots
+     *          de respuesta.meta y por último muestra un mensaje de error si la 
+     *          petición falla.
+     */
     function cargar_eventos()
     {
         document.getElementById("texto_estado").textContent = `Cargando...`;
@@ -149,7 +175,12 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("mensaje_error").style.display = "block";
         });
     }
-
+    /**
+     * @brief Recorre el array de eventos y creamos las tarjetas por cada uno de los eventos
+     * @details Si el array está vacio mostramos que no se a encontrado ningún evento,
+     *          solo lo pone al DOM si la tarjeta no devuelve null.
+     * @param {Array} lista_eventos un array de objeto de vuelto por la API.
+     */
     function mostrar_eventos(lista_eventos)
     {
         var contenedor = document.getElementById("contenedor_eventos");
@@ -168,7 +199,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }     
         });
     }
-
+    /**
+     * @brief creamos un elemento div como tarjeta
+     * @details Usamo un try and catch para que un error de algún evento no
+     *          impida crear las otras tarjetas.
+     * @param {Object} evento Un objeto devuelto por la API
+     * @returns {HTMLElement} devuelve el div que hemos creado o null si hubo algún error.
+     */
     function crear_tarjeta(evento)
     {
         try
@@ -189,7 +226,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return null;
         }
     }
-
+    /**
+     * @brief Actualizaq el estado de los botones y el texto informativo
+     * @details Desactivamos el boton anterior si estamos en la primera página o
+     *          desactiva el boton siguiente si estamos en la última página
+     */
     function actualizar_pagina()
     {
         document.getElementById("btn_anterior").disabled = (pagina_actual <= 1);
@@ -198,7 +239,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("info_pagina").textContent = "Pagina " + pagina_actual + " de " + total_paginas;
     }
-
+    /**
+     * @brief Lee los valores de los filtros y regcarga los eventos desde la página 1
+     * @details Guarda los valores en las variables para construir la URL y lo incluye
+     *          en la siguiente petición
+     */
     function aplicar_filtros()
     {
         filtro_pais = document.getElementById("filtro_pais").value;
@@ -207,7 +252,11 @@ document.addEventListener("DOMContentLoaded", () => {
         pagina_actual = 1;
         cargar_eventos();
     }
-
+    /**
+     * @brief Vacia los filtros y recarga los eventos desde la página 1
+     * @details limpia los inputs del HTML para construir URL y no incluye los filtros
+     *          en la siguiente petición
+     */
     function limpiar_filtros()
     {
         document.getElementById("filtro_pais").value = "";
@@ -219,7 +268,10 @@ document.addEventListener("DOMContentLoaded", () => {
         pagina_actual = 1;
         cargar_eventos();
     }
-
+    /**
+     * @brief Asigna los botones de la página medallero
+     * @details Comprueba que los botones existan antes de asignarlos
+     */
     function inicializar_botones_medallero()
     {
         var btn_buscar_pais = document.getElementById("btn_buscar_pais");
@@ -236,7 +288,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     renderizar_tabla(todos_los_paises);
             });
     }
-
+    /**
+     * @brief Carga el medallero desde la API
+     * @details hacemos fetch a ENDPOINT_MEDALLERO y guarda los datos obtenidos en
+     *          todos_los_paises para poder filtrar despues sin volver a llamar a la API.
+     */
     function cargar_medallero()
     {
         document.getElementById("texto_estado_medallero").textContent = "Cargando...";
@@ -255,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 todos_los_paises = datos.data;
                 renderizar_tabla(todos_los_paises);
-                document.getElementById("texto_estado_medallero").textContent = todos_los_paises.length + `paises en el medallero.`;
+                document.getElementById("texto_estado_medallero").textContent = todos_los_paises.length + ` paises en el medallero.`;
             })
             
             .catch(function (error){
@@ -263,6 +319,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("mensaje_error_medallero").style.display = "block";
             });
     }
+    /**
+     * @brief Carga un array de paises como las filas en la tabla medallero
+     * @details limpia el cuerpo_tabla antes de insertar nada, si el array está vacio
+     *          nos muestra un mensaje para avisarnos, además usamos try and catch por cada fila
+     *          para que un error no rompa toda la tabla y muestre los datos
+     * @param {Array} lista_paises array de objetos pais con sus medallas
+     */
     function renderizar_tabla(lista_paises)
     {
         var cuerpo_tabla = document.getElementById("cuerpo_tabla");
@@ -292,6 +355,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+    /**
+     * @brief filtra la tabla del medallero mediante el nombre del país si tener que llamar a la API
+     * @details lee el texto de buscar_pais y filtra el array 
+     *          todos_los_paises y llama a renderizar_tabla con el resultado
+     */
     function filtrar_por_nombre()
     {
         var busqueda = document.getElementById("buscar_pais").value.toLowerCase();
