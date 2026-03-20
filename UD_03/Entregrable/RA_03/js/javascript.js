@@ -1,4 +1,16 @@
+const tu = document.getElementById("tu");
+const icono_tu = document.getElementById("icono_tu");
 
+const cpu = document.getElementById("cpu");
+const icono_cpu = document.getElementById("icono_cpu");
+
+const titulo_resultado = document.getElementById("titulo_resultado");
+const contador_Victorias = document.getElementById("contador_Victorias");
+const contador_Derrotas = document.getElementById("contador_Derrotas");
+const contador_Empates = document.getElementById("contador_Empates");
+
+const btnReiniciar = document.getElementById("reiniciar");
+const btnReglas = document.getElementById("reglas");
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -8,6 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     inicializarJuego();
 
+    /**
+    * @brief Inicializa el juego configurando los elementos, estados y eventos necesarios.
+    *
+    * Esta función prepara todo lo necesario para que el juego pueda comenzar,
+    * incluyendo la configuración de la interfaz, los valores iniciales de los
+    * jugadores y la vinculación de eventos a los controles.
+    *
+    * @return {void} No devuelve ningún valor.
+    */
     function inicializarJuego()
     {
         const btnPiedra = document.getElementById("piedra");
@@ -16,16 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const btnLargto = document.getElementById("lagarto");
         const btnSpock = document.getElementById("spock");
 
-        const tu = document.getElementById("tu");
-        const icono_tu = document.getElementById("icono_tu");
-
-        const cpu = document.getElementById("cpu");
-        const icono_cpu = document.getElementById("icono_cpu");
-
-        const titulo_resultado = document.getElementById("titulo_resultado");
-        const contador_Victorias = document.getElementById("contador_Victorias");
-        const contador_Derrotas = document.getElementById("contador_Derrotas");
-        const contador_Empates = document.getElementById("contador_Empates");
+        
 
         if(btnPiedra){
             btnPiedra.addEventListener("click", () => {
@@ -62,6 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
 
+        if(btnReiniciar)
+            btnReiniciar.addEventListener("click", () => {
+                resetearJuego();
+            });
+
+        if(btnReglas)
+            btnReglas.addEventListener("click", () => {
+                mostrarReglas();
+            });
+
         setTimeout(() => 
         {
             const contenedor = document.querySelector('main');
@@ -71,6 +93,18 @@ document.addEventListener("DOMContentLoaded", () => {
         inicializarToolstips();
     }
 
+    /**
+    * @brief Muestra la elección de un jugador (jugador humano o CPU) en un display con icono y texto.
+    *
+    * Esta función limpia el contenido del display, aplica la clase
+    * para animación/estilo y agrega los elementos que representan
+    * la jugada seleccionada (emoji y texto) del jugador indicado.
+    *
+    * @param {HTMLElement} display - El contenedor donde se mostrará la elección.
+    * @param {string} eleccion - La clave de la elección (por ejemplo: "piedra", "papel", "tijera"...).
+    * @param {string} jugador - Nombre del jugador que realizó la elección (por ejemplo: "JUGADOR" o "CPU").
+    * @return {void} No devuelve ningún valor.
+    */
     function mostrarEleccion(display, eleccion, jugador)
     {
         if(jugador == "Usuario")
@@ -220,24 +254,55 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    /**
+    * @brief Ejecuta una ronda del juego con la elección del usuario.
+    *
+    * Esta función realiza los siguientes pasos:
+    * 1. Reinicia los displays del juego.
+    * 2. Genera la elección de la CPU de forma aleatoria.
+    * 3. Muestra la elección del usuario y de la CPU con animaciones.
+    * 4. Calcula el resultado de la ronda.
+    * 5. Muestra el resultado y actualiza los contadores correspondientes.
+    *
+    * @param {string} eleccionUsuario - La elección realizada por el usuario (por ejemplo: "piedra", "papel", "tijera"...).
+    * @return {void} No devuelve ningún valor.
+    */
     function jugar(eleccionUsuario)
     {
-        reiniciarDisplays();
-
-        var dysplay = "block"
-        mostrarEleccion(dysplay, eleccionUsuario, "Usuario");
-
-        setTimeout(function()
+        try
         {
-            var eleccionCPU = obtenerEleccionCPU();
-            mostrarEleccion(dysplay, eleccionCPU, "CPU");
+            reiniciarDisplays();
 
-            var resultado = calcularResultadoJugada(eleccionUsuario, eleccionCPU);
-            mostrarResultadoJugada(resultado, eleccionUsuario, eleccionCPU);
-        }, 600);
-        
+            var dysplay = "block"
+            mostrarEleccion(dysplay, eleccionUsuario, "Usuario");
+
+            setTimeout(function()
+            {
+                try
+                {
+                    var eleccionCPU = obtenerEleccionCPU();
+                    mostrarEleccion(dysplay, eleccionCPU, "CPU");
+
+                    var resultado = calcularResultadoJugada(eleccionUsuario, eleccionCPU);
+                    mostrarResultadoJugada(resultado, eleccionUsuario, eleccionCPU);
+                } catch(errorCPU)
+                {
+                    console.error("Error al calcular la opcion de la CPU:", errorCPU.message);
+                }
+            }, 500);
+        } catch(error)
+        {
+            console.error("Error en la funcion jugar:", error.message);
+        }
     }
 
+    /**
+    * @brief Genera aleatoriamente la elección de la CPU.
+    *
+    * Esta función selecciona una opción al azar entre las disponibles y la devuelve.
+    *
+    * @return {string} La elección de la CPU (por ejemplo: "piedra", "papel" o "tijera"...).
+    */
     function obtenerEleccionCPU()
     {
         var random = Math.floor(Math.random()*5);
@@ -262,6 +327,17 @@ document.addEventListener("DOMContentLoaded", () => {
         return eleccionCPU;
     }
 
+    /**
+    * @brief Calcula el resultado de una ronda entre el usuario y la CPU.
+    *
+    * Esta función compara la elección del usuario con la elección de la CPU
+    * y determina si la ronda termina en victoria, derrota o empate según
+    * las reglas del juego.
+    *
+    * @param {string} usuario - La elección del usuario (por ejemplo: "piedra", "papel", "tijera"...).
+    * @param {string} cpu - La elección de la CPU (por ejemplo: "piedra", "papel", "tijera"...).
+    * @return {string} El resultado de la ronda: "victoria", "derrota" o "empate".
+    */
     function calcularResultadoJugada(usuario, cpu)
     {
         var resultado = false;
@@ -324,6 +400,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return conclusion;
     }
 
+    /**
+    * @brief Reinicia los displays del juego a su estado inicial.
+    *
+    * Esta función restablece el contenido de los displays del usuario y de la CPU,
+    * elimina cualquier clase de animación activa y restablece el mensaje de resultado
+    * al texto predeterminado "¡Batalla!".
+    *
+    * @return {void} No devuelve ningún valor.
+    */
     function reiniciarDisplays()
     {
         titulo_resultado.classList.remove("ganador");
@@ -333,6 +418,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         titulo_resultado.textContent = `¡Batalla!`;
 
+        tu.classList.remove("texto-jugada");
+        tu.classList.add("placeholder");
+
+        icono_tu.classList.remove("icono-jugada-grande");
+        icono_tu.classList.add("placeholder");
+        
+        icono_tu.textContent = ``;
+        tu.textContent = `?`;
 
         cpu.classList.remove("texto-jugada");
         cpu.classList.add("placeholder");
@@ -344,6 +437,18 @@ document.addEventListener("DOMContentLoaded", () => {
         cpu.textContent = `?`;
     }
 
+    /**
+    * @brief Muestra el resultado de una ronda en la interfaz del juego.
+    *
+    * Esta función actualiza el mensaje de resultado según si el usuario ganó,
+    * perdió o empató, aplica la clase correspondiente para estilos y
+    * actualiza los contadores de victorias, derrotas o empates.
+    *
+    * @param {string} resultado - Resultado de la ronda: "victoria", "derrota" o "empate".
+    * @param {string} usuario - Elección del usuario (por ejemplo: "piedra", "papel", "tijera"...).
+    * @param {string} cpu - Elección de la CPU (por ejemplo: "piedra", "papel", "tijera"...).
+    * @return {void} No devuelve ningún valor.
+    */
     function mostrarResultadoJugada(resultado, usuario, cpu)
     {
         switch(resultado)
@@ -553,7 +658,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 break;
         }
     }
-
+    
+    /**
+    * @brief Actualiza los contadores de victorias, derrotas y empates en la interfaz.
+    *
+    * Esta función refleja los valores actuales de las variables globales
+    * `victorias`, `derrotas` y `empates` en los elementos del DOM correspondientes.
+    *
+    * @return {void} No devuelve ningún valor.
+    */
     function actualizarContadores()
     {
         contador_Victorias.textContent = `${victorias}`;
@@ -561,6 +674,15 @@ document.addEventListener("DOMContentLoaded", () => {
         contador_Derrotas.textContent = `${derrotas}`;
     }
 
+    /**
+    * @brief Inicializa los tooltips de los botones de elección.
+    *
+    * Esta función recorre todos los botones de elección, obtiene la jugada
+    * asociada a cada uno y configura el atributo `title` para mostrar
+    * un tooltip indicando qué opciones vence esa jugada.
+    *
+    * @return {void} No devuelve ningún valor.
+    */
     function inicializarToolstips()
     {
         const btnPiedra = document.getElementById("piedra");
@@ -576,4 +698,75 @@ document.addEventListener("DOMContentLoaded", () => {
         btnSpock.title = "Spock vence a: Piedra y Tijera";
     }
 
+    /**
+    * @brief Muestra las reglas completas del juego en la consola.
+    *
+    * Esta función imprime un resumen de todas las reglas del juego,
+    * indicando qué jugada vence a cuáles otras.
+    *
+    * @return {void} No devuelve ningún valor.
+    */
+    function mostrarReglas()
+    {
+        console.log("Reglas del juego:")
+        console.log("   Piedra aplasta a Tijera y Lagarto")
+        console.log("   Papel cubre a Piedra y desautoriza a Spock:")
+        console.log("   Tijera corta a Papel y decapita a Lagarto")
+        console.log("   Lagarto envenena a Spock y devora a Papel")
+        console.log("   Spock vaporiza a Piedra y rompe a Tijera")
+    }
+    /**
+    * @brief Reinicia el juego a su estado inicial.
+    *
+    * Esta función realiza las siguientes acciones:
+    * - Restablece los contadores de victorias, derrotas y empates a cero.
+    * - Reinicia los displays del juego.
+    * - Actualiza los contadores en la interfaz.
+    * - Muestra un mensaje temporal indicando que el juego ha sido reiniciado.
+    *
+    * @return {void} No devuelve ningún valor.
+    */
+    function resetearJuego() {
+        empates = 0;
+        victorias = 0;
+        derrotas = 0;
+        reiniciarDisplays();
+        actualizarContadores();
+        titulo_resultado.textContent = `¡Juego reiniciado!`;
+    }
+
+    /**
+    * @brief Maneja las pulsaciones de teclas para jugar o reiniciar el juego.
+    *
+    * Este listener escucha los eventos de teclado (`keydown`) y realiza las siguientes acciones:
+    * - Asocia las teclas numéricas '1' a '5' a las elecciones del juego: "piedra", "papel", "tijera", "lagarto" o "spock".
+    * - La tecla 'r' reinicia el juego.
+    * - La tecla 's' muestra las reglas del juego.
+    *
+    * @param {KeyboardEvent} event - El evento de pulsación de tecla.
+    */
+    document.addEventListener('keydown', (event) => 
+    {
+        const teclas = 
+        {
+            "1": "piedra",
+            "2": "papel",
+            "3": "tijera",
+            "4": "lagarto",
+            "5": "spock"
+        };
+
+        if(teclas[event.key])
+        {
+            jugar(teclas[event.key]);
+        }
+        else if(event.key === "r")
+        {
+            resetearJuego();
+        }
+        else if(event.key === "s")
+        {
+            mostrarReglas();
+        }
+    });
 });

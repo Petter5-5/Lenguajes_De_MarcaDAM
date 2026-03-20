@@ -1,32 +1,61 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="author" content="Yeray Trejo Sánchez">
-        <title>Jugadores Olimpicos</title>
-        <link rel="stylesheet" href="estilos.css">
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <div class="contenedor_cabecera">
-                <div class="contenedor_titutlo">
-                    <h2>LOS JUEGOS OLIMPICOS</h2>
-                </div>
-                <div class="contenedor_menu">
-                    <ul>
-                       <li>opcio 1</li>
-                       <li>opcio 1</li>
-                       <li>opcio 1</li> 
-                    </ul>
-                </div>
-            </div>
-        </header>
-        <main>
-            <p>holas</p>
-        </main>
-        <footer>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Yeray Trejo Sánchez">
+    <title>Juegos Olímpicos Paris 2024</title>
+    <link rel="icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
 
-        </footer>
-    </body>
+    <header>
+        <h1>Juegos Olímpicos Paris 2024</h1>
+        <nav>
+            <a href="index.html" class="activo">Eventos</a>
+            <a href="page/medallero.html">Medallero</a>
+            <a href="page/sobre-mi.html">Sobre mí</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Eventos Olímpicos</h2>
+        <section class="filtros">
+            <div class="grupo_filtro">
+                <label for="filtro_pais">País (código 3 letras)</label>
+                <input type="text" id="filtro_pais" placeholder="Ej: USA, ESP, BRA" maxlength="3">
+            </div>
+            <div class="grupo_filtro">
+                <label for="filtro_disciplina">Disciplina</label>
+                <select id="filtro_disciplina">
+                    <option value="">Todas</option>
+                </select>
+            </div>
+            <div class="grupo_filtro">
+                <label for="filtro_fecha">Fecha</label>
+                <input type="date" id="filtro_fecha" min="2024-07-24" max="2024-08-11">
+            </div>
+            <button id="btn_buscar">Buscar</button>
+            <button id="btn_reset" class="boton_secundario">Limpiar</button>
+        </section>
+        <p id="texto_estado" class="texto_estado">Cargando eventos...</p>
+        <div id="contenedor_eventos" class="contenedor_eventos">
+        </div>
+        <div class="paginacion">
+            <button id="btn_anterior" disabled>← Anterior</button>
+            <span id="info_pagina" class="info_pagina">Página 1</span>
+            <button id="btn_siguiente">Siguiente →</button>
+        </div>
+        <div id="mensaje_error" class="error" style="display:none">
+            <p>No se han podido cargar los eventos. Comprueba tu conexión.</p>
+            <button id="btn_reintentar">Reintentar</button>
+        </div>
+    </main>
+    <footer>
+        <p>Proyecto RA 04 y 05  Lenguajes de Marcas</p>
+        <p>Realizado por: <b>Yeray Trejo Sánchez</b> 1DAM 2025-2026</p>
+    </footer>
     <script src="js/javascript.js"></script>
+</body>
 </html>

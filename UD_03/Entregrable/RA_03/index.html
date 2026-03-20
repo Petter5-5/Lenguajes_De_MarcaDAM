@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="author" content="Yeray Trejo Sánchez">
+
         <title>Piedra, Papel, Tijera, Lagarto, SPOCK</title>
+        
         <link rel="icon" href="imagenes/spock-hand-gesture.svg" type="image/png">
         <link rel="stylesheet" href="estilos.css">
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
@@ -11,7 +13,7 @@
     <body>
         <header>
             <p class="titulo-juego">PIEDRA · PAPEL · TIJERA · LAGARTO · SPOCK</p>
-            <p class="subtitulo-juego">El juego definitivo</p>
+            <p class="subtitulo-juego">El juego definitivo (con partes opcionales)</p>
         </header>
         <main>
             <div class="paneles-arriba">
@@ -48,23 +50,29 @@
                     </div>
                 </div>
             </div>
-            <div class="contenedor-resultado">
-                <div class="resultados">
-                    <h1 class="mensaje-resultado" id="titulo_resultado">Estadísticas del juego</h1>
+            <div class="contenedor_estadisticas_opciones">
+                <div class="contenedor-resultado">
+                    <div class="resultados">
+                        <h1 class="mensaje-resultado" id="titulo_resultado">Estadísticas del juego</h1>
+                    </div>
+                    <div class="estadisticas-juego">
+                        <div class="panel-estadistica">
+                            <p class="valor-estadistica" id="contador_Victorias">0</p>
+                            <p class="etiqueta-estadistica">VICTORIAS</p>
+                        </div>
+                        <div class="panel-estadistica">
+                            <p class="valor-estadistica" id="contador_Derrotas">0</p>
+                            <p class="etiqueta-estadistica">DERROTAS</p>
+                        </div>
+                        <div class="panel-estadistica">
+                            <p class="valor-estadistica" id="contador_Empates">0</p>
+                            <p class="etiqueta-estadistica">EMPATES</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="estadisticas-juego">
-                    <div class="panel-estadistica">
-                        <p class="valor-estadistica" id="contador_Victorias">0</p>
-                        <p class="etiqueta-estadistica">VICTORIAS</p>
-                    </div>
-                    <div class="panel-estadistica">
-                        <p class="valor-estadistica" id="contador_Derrotas">0</p>
-                        <p class="etiqueta-estadistica">DERROTAS</p>
-                    </div>
-                    <div class="panel-estadistica">
-                        <p class="valor-estadistica" id="contador_Empates">0</p>
-                        <p class="etiqueta-estadistica">EMPATES</p>
-                    </div>
+                <div class="contenedor_botones">
+                    <button class="boton_optativo" id="reiniciar">REINICIAR JUEGO</button>
+                    <button class="boton_optativo" id="reglas">MOSTRAR REGLAS</button>
                 </div>
             </div>
         </main>

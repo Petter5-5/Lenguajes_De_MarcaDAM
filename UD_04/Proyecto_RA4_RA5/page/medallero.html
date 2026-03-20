@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Yeray Trejo Sánchez">
+    <title>Medallero</title>
+    <link rel="icon" href="../image/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Juegos Olímpicos Paris 2024</h1>
+        <nav>
+            <a href="../index.html">Eventos</a>
+            <a href="medallero.html" class="activo">Medallero</a>
+            <a href="sobre-mi.html">Sobre mí</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Medallero Oficial</h2>
+        <section class="filtros">
+            <div class="grupo_filtro">
+                <label for="buscar_pais">Buscar país</label>
+                <input type="text" id="buscar_pais" placeholder="Ej: Espanha, Alemanha...">
+            </div>
+            <button id="btn_buscar_pais">Buscar</button>
+            <button id="btn_ver_todos" class="boton_secundario">Ver todos</button>
+        </section>
+        <p id="texto_estado_medallero" class="texto_estado">Cargando medallero...</p>
+        <div class="contenedor_tabla">
+            <table id="tabla_medallero" class="tabla_medallero">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>País</th>
+                        <th>🥇 Oro</th>
+                        <th>🥈 Plata</th>
+                        <th>🥉 Bronce</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo_tabla">
+                </tbody>
+            </table>
+        </div>
+        <div id="mensaje_error_medallero" class="error" style="display:none">
+            <p> No se pudo cargar el medallero.</p>
+            <button id="btn_reintentar_medallero">Reintentar</button>
+        </div>
+    </main>
+    <footer>
+        <p>Proyecto RA 04 y 05  Lenguajes de Marcas</p>
+        <p>Realizado por: <b>Yeray Trejo Sánchez</b> 1DAM 2025-2026</p>
+    </footer>
+    <script src="../js/javascript.js"></script>
+</body>
+</html>

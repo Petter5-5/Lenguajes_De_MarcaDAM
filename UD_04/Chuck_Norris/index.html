@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Yeray Trejo Sánchez">
+        <title></title>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Black+Ops+One&family=Anton&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="Estilos.css">
+    </head>
+    <body>
+        <header>
+            <div class="contenedor-cabecera">
+                <div class="texto-logo">
+                    <h1>CHISTES APROBADOS POR CHUCK NORRIS</h1>
+                </div>
+                <p class="subtitulo-logo">NO SON CHISTES. SON HECHOS</p>
+            </div>
+        </header>
+        <main>
+            <div class="contenido-principal">
+                <div class="tarjeta-chiste-chuck">
+                    <div class="tarjeta-chiste-cabecera">
+                        <h2 class="estrella">⭐</h2>
+                        <h2>CHISTES DE CHUCK NORRIS</h2>
+                        <h2 class="estrella">⭐</h2>
+                    </div>
+                    <div class="contenedor-imagen-chuck">
+                        <img class="imagen-chuck" src="imagenes/sealofapproval.png">
+                    </div>
+                    <div class="contenedor-chiste">
+                        <p class="chiste-texto" id="chiste">Selecciona una categoría y haz clic en "Obtener chistes" o haz clic en "Chistes aleatorio"</p>
+                    </div>
+                    <div class="elementos-control-chiste">
+                        <div class="contenedor-categorias">
+                            <label>SELECCIONA UNA CATEGORÍA:</label>
+                            <select class="categoria-select" id="seleccionar">
+                                <option value="" id="opcion">Cargando...</option>
+                            </select>
+                            <button class="boton-obtener-chiste" id="btnChiste"><p class="texto-boton-chiste">OBTENER CHISTE</p></button>
+                        </div>
+                    </div>
+                    <div class="elementos-control-chiste-extra">
+                        <button class="mini-boton" id="btnAleatorio">CHISTE ALEATORIO</button>
+                        <button class="mini-boton" id="btnCopiar">COPIAR CHISTE</button>
+                        <div class="contenedor-contador-chistes">
+                            <p>Chistes obtenidos: <b id="contador">0</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+
+        </footer>
+        <script src="js/javascript.js"></script>
+    </body>
+</html>
